@@ -1,0 +1,19 @@
+times_of_india:
+  api_url: https://toifeeds.indiatimes.com/treact/feeds/toi/web/show/topic?path=/topic/{topic}-news/news&row=20&curpg={index}
+  index_start: 1
+  index_step: 1
+  api_path:
+    - contentsData
+    - items
+  api_foreach_path:
+    - wu
+
+news_18:
+  api_url: 'https://api-en.news18.com/nodeapi/v1/eng//get-article-list?count=20&offset={index}&fields=weburl&filter={{"tags.slug": "{topic}"}}&sortOrder=desc&sortBy=created_at'
+  index_start: 0
+  index_step: 20
+  api_path:
+    - data
+  api_foreach_path:
+    - weburl
+  filter_out: /videos/
