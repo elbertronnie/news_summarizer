@@ -68,7 +68,8 @@ def summarize(text):
     tokenized_text = tokenizer.encode('summarize: ' + text, return_tensors="pt")
     model.eval()
     summary_ids = model.generate(tokenized_text, max_length=300, min_length=100)
-    return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    output = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    return output.replace(" .", ".")
 
 
 wordpress_credentials = os.getenv("WP_USER") + ':' + os.getenv("WP_PASSWORD")
